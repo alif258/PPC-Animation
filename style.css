@@ -1,0 +1,338 @@
+/* ===========================
+   Reset & Base
+   =========================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #0d1117;
+  font-family: sans-serif;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+/* ===========================
+   Section — 500dvh for 5 steps
+   =========================== */
+#tergeting-section {
+  height: 300dvh;
+  position: relative;
+}
+
+/* ===========================
+   Sticky wrapper
+   =========================== */
+.sticky-wrapper {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ===========================
+   Heading
+   =========================== */
+.section-header {
+  margin-bottom: 2.5rem;
+}
+
+.section-header h2 {
+  font-family: "Recoleta", Georgia, serif;
+  font-size: clamp(1.8rem, 4.5vw, 4rem);
+  font-weight: 400;
+  background: linear-gradient(180deg, #61ffe6 14.94%, #038c75 85.06%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.15;
+}
+
+#tergeting-section.bg-color-active .section-header h2 {
+  background: linear-gradient(to bottom, #a0b6fd 0%, #7aa9fd 40%, #559dfd 60%, #1f8afd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===========================
+   Three-column layout
+   =========================== */
+.timeline-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr 48px;
+  align-items: center;
+  gap: 0 3rem;
+}
+
+/* ===========================
+   LEFT — Image
+   =========================== */
+.image-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-images {
+  position: relative;
+  width: 100%;
+  height: 420px;
+}
+
+.timeline-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  opacity: 0;
+  /* Incoming: starts above, fades in as it slides down into place */
+  transform: translateY(-28px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.timeline-image.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Outgoing image — slides down and fades out */
+.timeline-image.leaving {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===========================
+   MIDDLE — content column
+   =========================== */
+.content-col {
+  position: relative;
+}
+
+/* Fade masks — top & bottom */
+.content-col::before,
+.content-col::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 140px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.content-col::before {
+  top: 0;
+  background: linear-gradient(
+    to bottom,
+    #0d1117 0%,
+    #0d1117 20%,
+    rgba(13,17,23,0.9) 50%,
+    rgba(13,17,23,0.4) 80%,
+    transparent 100%
+  );
+}
+
+.content-col::after {
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    #0d1117 0%,
+    #0d1117 20%,
+    rgba(13,17,23,0.9) 50%,
+    rgba(13,17,23,0.4) 80%,
+    transparent 100%
+  );
+}
+
+/* Clip window — overflow hidden, NO scroll-behavior */
+.content-scroll-area {
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+}
+
+/*
+  Inner list — JS moves this with translateY.
+  CSS transition handles the smooth animation.
+  This never touches window scroll at all.
+*/
+.timeline-inner-list {
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* ── Every item — inactive = dimmed ── */
+.timeline-content-item {
+  padding: 2rem 0;
+  cursor: pointer;
+  transition: opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+
+/* Active item (scroll position tracked by JS) */
+.timeline-content-item.active {}
+
+/* ── Heading ── */
+.timeline-content-item h4 {
+    font-family: "Recoleta", serif;
+    font-size: clamp(22px, 3.4vw, 2.3dvw);
+    font-weight: 400;
+    background: linear-gradient(to bottom, #a0b6fd 0%, #7aa9fd 40%, #559dfd 60%, #1f8afd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+#tergeting-section.bg-color-active .timeline-content-item h4 {
+  background: linear-gradient(to bottom, #a0b6fd 0%, #7aa9fd 40%, #559dfd 60%, #1f8afd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Paragraph ── */
+.timeline-content-item p{
+    font-family: Poppins, sans-serif;
+    font-size: clamp(0.875rem, 2vw, 1.46dvw);
+    font-weight: 300;
+    color: #ffffff99;
+}
+
+/* ===========================
+   RIGHT — line + dots
+   =========================== */
+.line-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 420px;
+}
+
+.timeline-line {
+  position: relative;
+  width: 2px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.timeline-line-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: rgba(255, 255, 255, 0.525) ;
+  transition: height 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px;
+}
+
+#tergeting-section.bg-color-active .timeline-line-progress {
+  background: linear-gradient(180deg, #a0b6fd, #1f8afd);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  transition: width  0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              height 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.4s ease,
+              box-shadow 0.4s ease;
+  flex-shrink: 0;
+}
+
+.dot.active {
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(180deg, #61ffe6 14.94%, #038c75 85.06%);
+  box-shadow: 0 0 0 5px rgba(97, 255, 230, 0.15),
+              0 0 14px rgba(97, 255, 230, 0.3);
+}
+
+.dot.isFinished {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+@media (max-width: 900px) {
+  .timeline-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem 0;
+  }
+
+  .line-col { height: auto; }
+
+  .timeline-line {
+    flex-direction: row;
+    width: 80%;
+    height: 2px;
+    margin: 0 auto;
+    justify-content: space-between;
+  }
+
+  .timeline-line-progress {
+    top: 0; left: 0;
+    width: 0%;
+    height: 100%;
+    transition: width 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .timeline-images,
+  .content-scroll-area,
+  .line-col { height: 500px; }
+
+  .section-header h2 {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+
+  .content-col::before,
+  .content-col::after { height: 100px; }
+}
+.pt10{
+margin-top: 80px;
+}
+.pb2{
+  padding-top: 80px;
+    padding-bottom: 250px;
+}
+.pb3{
+    padding-bottom: 220px;
+
+}.pb4{
+    padding-bottom: 200px;
+
+}
+.pb5{
+  padding-bottom: 250px;
+}
+
+
+

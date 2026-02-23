@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <section class="first-bg" id="tergeting-section">
+    <div class="sticky-wrapper">
+      <div class="container">
+
+        <!-- TOP: Section heading -->
+        <div class="section-header">
+          <h2>The Secret Sauce Is In Targeting</h2>
+        </div>
+
+        <!-- Image | Scrollable Text | Line+Dots -->
+        <div class="timeline-layout">
+
+          <!-- LEFT: Image -->
+          <div class="image-col">
+            <div class="timeline-images">
+              <img src="img/Discovery-Targeting.webp" class="timeline-image active" alt="Discovery" />
+              <img src="img/Intent-Targeting.webp"    class="timeline-image"        alt="Intent" />
+              <img src="img/Ranking-Targeting.webp"   class="timeline-image"        alt="Ranking" />
+              <img src="img/Defensive-Targeting.webp" class="timeline-image"        alt="Defensive" />
+              <img src="img/Scale-Retargeting.webp"   class="timeline-image"        alt="Scale" />
+            </div>
+          </div>
+
+          <!-- MIDDLE: Inner scrollable content -->
+          <div class="content-col">
+            <div class="content-scroll-area" id="contentScroll">
+
+              <!-- ★ wrapper div — JS moves this via translateY ★ -->
+              <div class="timeline-inner-list">
+
+                <div class="timeline-content-item pt10 active" data-index="0">
+                  <h4>Discovery Targeting</h4>
+                  <p>Every profitable growth journey begins with discovery. Using AI-powered analysis, broad match, automatic campaigns, and category targeting, we uncover how shoppers search, compare, and explore your category. This reveals hidden demand, untapped traffic, and new growth opportunities your competitors haven't captured yet.</p>
+                </div>
+
+                <div class="timeline-content-item pb2" data-index="1">
+                  <h4>Intent Targeting</h4>
+                  <p>Once new opportunities are identified, we focus on shoppers with proven buying intent. Through phrase match targeting, competitor ASIN conquesting, and high-intent keyword targeting, we capture shoppers actively comparing and ready to purchase — turning interest into conversions.</p>
+                </div>
+
+                <div class="timeline-content-item pb3" data-index="2">
+                  <h4>Ranking Targeting</h4>
+                  <p>With consistent conversion data, the next step is strengthening your market position. Using exact match targeting and proven converting search terms, we increase sales velocity, improve keyword dominance, and accelerate your organic ranking on Amazon.</p>
+                </div>
+
+                <div class="timeline-content-item pb4" data-index="3">
+                  <h4>Defensive Targeting</h4>
+                  <p>As your visibility and rank grow, protecting your position becomes essential. Our data-driven defensive targeting secures your brand by targeting your own ASINs, protecting branded keywords, and preventing competitors from stealing your traffic and customers.</p>
+                </div>
+
+                <div class="timeline-content-item pb5" data-index="4">
+                  <h4>Scale &amp; Retargeting</h4>
+                  <p>We scale what's already profitable and re-engage shoppers who showed intent but didn't convert. Through high-intent audience targeting, product view retargeting, purchase-based retargeting, and cart abandonment recovery, we expand revenue without sacrificing efficiency.</p>
+                </div>
+
+              </div>
+              <!-- end .timeline-inner-list -->
+
+            </div>
+          </div>
+
+          <!-- RIGHT: Vertical line + dots -->
+          <div class="line-col">
+            <div class="timeline-line">
+              <div class="timeline-line-progress"></div>
+              <div class="dot active"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="demo.js"></script>
+</body>
+</html>
